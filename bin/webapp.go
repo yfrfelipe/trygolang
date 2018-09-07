@@ -25,6 +25,8 @@ func loadPage(title string) *Page {
 
 func editHandler(writer http.ResponseWriter, request *http.Request) {
 	template, _ := template.ParseFiles("http/index.html")
+	resp, _ := ioutil.ReadAll(request.Body)
+	log.Printf("Request:", string(resp))
 	template.Execute(writer, &Page{Title: "Opa"})
 }
 
